@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{login.css}" />
+  </head>
+  
+  <body>
+    
+    	
+<div class="login-form">
+ <!-- tag::thAction[] -->
+    <form method="POST" th:action="@{/login}" id="login">
+    <!-- end::thAction[] -->
+      
+   
+		<div class="avatar">
+			<img src="/examples/images/avatar.png" alt="">
+		</div>
+        <h2 class="text-center">Login</h2>   
+        <label for="username">Username: </label>
+      <input type="text" name="username"/><br/>
+      <label for="password">Password: </label>
+      <input type="password" name="password"/><br/>
+		        
+        <div class="form-group">
+            <input type="submit" value="Login"/>
+        </div>
+		
+    </form>
+    <p>Don't have an account?<br/> Click 
+       <a th:href="@{/register}">here</a> to Sign Up.</p>
+       <div th:if="${error}"> 
+      Unable to login. Check your username and password.
+    </div>
+    
+</div>
+    
+    
+    
+    
+    
+    
+    <!-- tag::thAction[] -->
+    <form method="POST" th:action="@{/login}" id="login">
+    <!-- end::thAction[] -->
+      
+      
+     
+    </form>
+  </body>
+</html>
