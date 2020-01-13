@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Design</title>
+    <link rel="stylesheet" th:href="@{/styles.css}" />
+    <link rel="stylesheet" th:href="@{/bootstrap-3.3.7}" />
+    
+    
+  </head>
+  
+  <body>
+  
+ 
+  
+  
+  
+    <h1>Design your Collar!</h1>
+    <h2>Feeling Creative, <span th:text="${user.fullname}">NAME</span>?</h2>
+    <img th:src="@{/images/Logo.png}"/>
+    
+    <form method="POST" th:action="@{/logout}" id="logoutForm">
+      <input type="submit" value="Logout"/>
+    </form>
+        
+    <form th:method="POST" th:object="${design}" th:action="@{/design}" id="tacoForm">
+
+    <span class="validationError"
+          th:if="${#fields.hasErrors('ingredients')}" 
+          th:errors="*{ingredients}">Ingredient Error</span>
+
+    <div class="grid">
+      <div class="ingredient-group" id="materials">
+      <h3>Choose your material:</h3>
+      <div th:each="ingredient : ${material}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+
+	  <div class="ingredient-group" id="sizes">
+      <h3>Select size:</h3>
+      <div th:each="ingredient : ${size}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+  
+	  <div class="ingredient-group" id="colours">
+      <h3>Choose your base colour:</h3>
+      <div th:each="ingredient : ${colour}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+        
+	  <div class="ingredient-group" id="patterns">
+      <h3>Pick a pattern:</h3>
+      <div th:each="ingredient : ${pattern}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+      
+	  <div class="ingredient-group" id="patterncolour">
+      <h3>Pick your patterns colour:</h3>
+      <div th:each="ingredient : ${pattern_colour}">
+        <input name="ingredients" type="checkbox" th:value="${ingredient.id}" />
+        <span th:text="${ingredient.name}">INGREDIENT</span><br/>
+      </div>
+      </div>
+      </div>
+      
+      <div>
+
+
+      <h3>Name your Collar:</h3>
+      <input type="text" th:field="*{name}"/>
+      <span class="validationError"
+            th:if="${#fields.hasErrors('name')}" 
+            th:errors="*{name}">Name Error</span>
+      <br/>
+      <br/>
+      <br/>
+      
+      <button>Submit your Collar</button>
+      </div>
+    </form>
+  </body>
+</html>
